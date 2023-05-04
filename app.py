@@ -6,12 +6,9 @@ app = Flask(__name__)
 from flask_sqlalchemy import SQLAlchemy
 
 app.config['SECRET_KEY'] = 'ab1c7263106be15a8cd243a10b5ec8cc'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///mydatabase.db'
-
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 
 db = SQLAlchemy(app)
-
-
 
 class User(db.Model):
    id = db.Column(db.Integer, primary_key=True)
