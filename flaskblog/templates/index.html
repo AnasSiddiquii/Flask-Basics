@@ -2,11 +2,18 @@
 {% block content %}
     {% for post in posts %}
     <div class="blog row border rounded">
-        <h2 class="col-2 text-info">{{post.title}}</h2>
-        <div class="row">
-            <h4 class="col-2">{{post.name}}</h4>
-            <h5 class="col-2">{{post.content}}</h5>
-            <h5 class="col-2">{{post.date}}</h5>
+        <div class="col-2">
+            <img class="rounded-circle border" src="{{ url_for('static', filename='profile_pics/' + post.author.image_file) }}" height="80">
+        </div>
+        <div class="col-10">
+            <div class="row">
+                <h2 class="col-2 text-info">{{post.title}}</h2>
+            </div>
+            <div class="row">
+                <h5 class="col-3">{{post.author.username}}</h5>
+                <h5 class="col-6">{{post.content}}</h5>
+                <h5 class="col-3">{{post.date_posted.strftime('%Y-%m-%d')}}</h5>
+            </div>
         </div>
     </div>
     {% endfor %}

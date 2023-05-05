@@ -1,0 +1,48 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <h2 class="text-center text-success p-3">New Post</h2>
+    <center>
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+
+        <div class="form-group mt-3">
+            {{ form.title.label(class="form-control-label") }}<br>
+            &nbsp; &nbsp; &nbsp; 
+            
+            {% if form.title.errors %}
+                {{ form.title(class="form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.title.errors %}
+                        <span> 
+                            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+                            {{ error }}
+                        </span>
+                    {% endfor%}
+                </div>    
+            {% else %}
+                {{ form.title(class="form-control-lg") }}
+            {% endif %}
+        </div>
+        
+        <div class="form-group mt-3">
+            {{ form.content.label(class="form-control-label") }}<br>
+            
+            {% if form.content.errors %}
+                {{ form.content(class="form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.content.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor%}
+                </div>    
+            {% else %}
+                {{ form.content(class="form-control-lg") }}
+            {% endif %}
+        </div>
+
+        <div class="form-group mt-3">
+            {{ form.submit(class='btn btn-outline-info') }}
+        </div>
+
+    </form>
+    </center>
+{% endblock %}
