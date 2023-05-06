@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <div class="blog row border rounded">
+        <div class="col-2">
+            <img class="rounded-circle border" src="{{ url_for('static', filename='profile_pics/' + post.author.image_file) }}" height="80">
+            <br> &nbsp; &nbsp; &nbsp; 
+            <a class="link" href="{{ url_for('user_posts', username=post.author.username) }}"><b>{{post.author.username}}</b></a>
+        </div>
+        <div class="col-10">
+            <div class="row mt-2">
+                <h2 class="col-9 text-info"><a class="link" href="#">{{post.title}}</a></h2>
+                {% if post.author == current_user %}
+                <b class="col-3 mt-2">
+                    <div class="row">
+                        <a class="col-5" href="{{ url_for('update_post', post_id=post.id )}}"><button class="btn btn-secondary btn-sm">Update</button></a>
+                        <form class="col-5" action="{{ url_for('delete_post', post_id=post.id) }}" method="POST">
+                            <input type="submit" class="btn btn-danger btn-sm" value="Delete">
+                        </form>
+                    </div>
+                </b>
+                {% endif %}
+            </div>
+            <div class="row mt-2">
+                <h5 class="col-9">{{post.content}}</h5>
+                <b class="col-3">{{post.date_posted.strftime('%Y-%m-%d')}}</b>
+            </div>
+        </div>
+    </div>
+{% endblock %}

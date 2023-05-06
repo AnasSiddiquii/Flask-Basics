@@ -1,6 +1,6 @@
 {% extends 'layout.html' %}
 {% block content %}
-    <h2 class="text-center text-success p-3">New Post</h2>
+    <h2 class="text-center text-success p-3">{{ title }}</h2>
     <center>
     <form method="POST" action="">
         {{ form.hidden_tag() }}
